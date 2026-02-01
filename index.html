@@ -124,10 +124,10 @@
   const from = params.get("from") || "Abe";
   const msg = params.get("msg") || "I was hoping you’d say yes 😊";
 
-  // Date details (new)
-  const where = params.get("where") || "To be revealed";
+  // Date details
+  const where = params.get("where") || "To be revealed 🇫🇷"; // It's a surprise :)
   const when = params.get("when") || "Feb 14, 8:00 PM";
-  const attire = params.get("attire") || "You look gorgeous in anything ✨";
+  const attire = params.get("attire") || "You look gorgeous in anything ✨"; // A straight baddie 
   const plan = params.get("plan") || "I'll take care of everything 💖";
   const note = params.get("note") || "I’ll take care of everything 💖";
 
@@ -143,7 +143,6 @@
 
   let cancelNextClick = false;
 
-// Capture-phase click blocker (stops iOS from "clicking what's underneath")
 document.addEventListener(
   "click",
   (e) => {
@@ -156,7 +155,6 @@ document.addEventListener(
   true
 );
 
-// Make sure touch listeners can call preventDefault on iOS
 function armClickCancel() {
   cancelNextClick = true;
   setTimeout(() => (cancelNextClick = false), 450);
@@ -188,7 +186,6 @@ function armClickCancel() {
   yesBtn.addEventListener("click", () => {
     body.style.background = "radial-gradient(circle at top, #ffe6f0, #ff7aa2)";
 
-    // Replace entire card with date details
     card.innerHTML = `
       <h1 style="margin:0 0 10px;">💖 It’s a date!</h1>
       <p style="margin:0 0 18px;font-size:18px;line-height:1.5;">
