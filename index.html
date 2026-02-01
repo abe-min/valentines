@@ -141,6 +141,27 @@
   const yesBtn = document.getElementById("yesBtn");
   const noBtn = document.getElementById("noBtn");
 
+  let cancelNextClick = false;
+
+// Capture-phase click blocker (stops iOS from "clicking what's underneath")
+document.addEventListener(
+  "click",
+  (e) => {
+    if (cancelNextClick) {
+      e.preventDefault();
+      e.stopPropagation();
+      cancelNextClick = false;
+    }
+  },
+  true
+);
+
+// Make sure touch listeners can call preventDefault on iOS
+function armClickCancel() {
+  cancelNextClick = true;
+  setTimeout(() => (cancelNextClick = false), 450);
+}
+
   function escapeHtml(s) {
     return String(s).replace(/[&<>"']/g, (c) => ({
       "&": "&amp;",
